@@ -85,6 +85,7 @@ internals.shouldShowPrerenderedPage = function (req) {
   if (!userAgent) { return false; }
   if (req.method.toLowerCase() !== 'get') { return false; }
 
+  if (userAgent === "Prerender") return false
   //if it contains _escaped_fragment_, show prerendered page
   if (typeof req.url.query._escaped_fragment_ !== 'undefined') {
     isRequestingPrerenderedPage = true;
